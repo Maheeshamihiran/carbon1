@@ -20,7 +20,7 @@ const Energy = () => {
 
   const handleContinue = () => {
     console.log("Energy data:", formData);
-    // Navigate to next page
+    navigate("/transportation"); // Add this line to navigate to transportation
   };
 
   const handleSkip = () => {

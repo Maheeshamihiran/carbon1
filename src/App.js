@@ -6,6 +6,7 @@ import Logged from './component/Logged/Logged';
 import Busness from './component/Busness/Busness';
 import Facilities from './component/Facilities/Facilities';
 import Energy from './component/Energy/Energy';
+import Transportation from './component/Transportation/Transportation';
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Route path="/busness" element={<Busness />} />
           <Route path="/facilities" element={<Facilities />} />
           <Route path="/energy" element={<Energy />} />
+          <Route path="/transportation" element={<Transportation />} /> 
         </Routes>
       </div>
     </Router>

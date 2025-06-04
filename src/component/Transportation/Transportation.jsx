@@ -4,7 +4,6 @@ import { Progress } from "@/components/ui/progress";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Switch } from "@/components/ui/switch";
 import { Input } from "@/components/ui/input";
-import { cn } from "@/lib/utils";
 import "./Transportation.css";
 
 const Transportation = () => {
@@ -95,7 +94,7 @@ const Transportation = () => {
             </div>
           </div>
         </div>
-        <div className="header-divider"></div>
+       
       </header>
 
       {/* Main Content */}

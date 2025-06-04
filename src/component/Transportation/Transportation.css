@@ -84,6 +84,7 @@
   align-self: stretch;
   position: relative;
   width: 100%;
+  padding-top: 50px;
 }
 
 /* Progress Bar */
@@ -211,14 +212,40 @@
 }
 
 .radio-input {
-  width: 16px !important;
-  height: 16px !important;
-  border-radius: 9999px !important;
-  border: 1px solid #FAFAFA !important;
-  background: #09090B !important;
-  position: relative !important;
+ width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1px solid #FAFAFA;
+  background: #09090B;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+  position: relative;
+  margin: 0;
 }
 
+.radio-input:checked {
+  background: #FAFAFA;
+  border-color: #FAFAFA;
+}
+
+.radio-input:checked::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #09090B;
+}
+
+.radio-input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2);
+}
 .radio-label {
   align-self: stretch;
   color: rgba(214, 221, 230, 0.8);
@@ -338,7 +365,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 16px;
+  gap: 3px;
   align-self: stretch;
   position: relative;
 }
@@ -361,6 +388,7 @@
   border: none !important;
   height: auto !important;
   min-height: 40px !important;
+ 
 }
 
 .dashboard-button:hover {
