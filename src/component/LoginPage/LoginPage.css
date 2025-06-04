@@ -17,18 +17,18 @@
   flex-direction: column;
   overflow: hidden;
    background-image: linear-gradient(
-    to right,
+    to left,
     #18181b 0%,
     #18181b 35%,
     rgba(24, 24, 27, 0.85) 50%,
     rgba(24, 24, 27, 0.4) 75%,
     rgba(24, 24, 27, 0.1) 100%
-  ), url('C:\Users\ASUS\Documents\GitHub\CarbonWise-\my_app\public\E2.png');
-  background-position: right ;
+  ), url('C:\Users\ASUS\Documents\GitHub\carbon1\public\E2.png');
+  background-position: left ;
   background-repeat: repeat;
-  background-size: contain;
+  background-size: 3100px ;
   height: 100vh;
-  background-position-y:35px;
+  background-position-y:45px;
  
   
 }
@@ -100,7 +100,7 @@
   max-width: 400px;
   margin: 0 auto;
   z-index: 10;
-  margin-left: 130px;
+  margin-left: 150px;
   padding-top: 60px;
 }
 
