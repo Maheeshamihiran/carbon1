@@ -1,20 +1,14 @@
 import React, { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Progress } from "@/components/ui/progress";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Slider } from "@/components/ui/slider";
-import { cn } from "@/lib/utils";
+import { useNavigate } from "react-router-dom";
 import "./Energy.css";
 
 const Energy = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     energyProvider: "",
     electricityBill: "",
     renewableEnergy: "",
-    renewablePercentage: [0],
-    naturalGas: "",
-    gasUsage: ""
+    naturalGas: ""
   });
 
   const handleInputChange = (field, value) => {
@@ -25,30 +19,23 @@ const Energy = () => {
   };
 
   const handleContinue = () => {
-    console.log("Form data:", formData);
-    // Handle form submission logic here
+    console.log("Energy data:", formData);
+    // Navigate to next page
   };
 
   const handleSkip = () => {
-    console.log("Skipped energy profile setup");
-    // Handle skip logic here
+    console.log("Skipped energy form");
+    // Navigate to next page
   };
 
   return (
-    <div className="energy-profile">
-      {/* Header */}
-      <header className="energy-header">
-        <div className="header-container">
-          <div className="logo-section">
-            <div className="logo">
-              <svg 
-                className="logomark" 
-                width="28" 
-                height="28" 
-                viewBox="0 0 28 28" 
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
+    <div className="energy-container">
+      {/* Navigation Header */}
+      <div className="energy-nav">
+        <div className="nav-content">
+          <div className="logo-container">
+            <div className="logo-icon">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path 
                   d="M14.0002 2.33334V25.6667M22.2497 5.75042L5.75058 22.2496M25.6668 14H2.3335M22.2497 22.2496L5.75058 5.75042" 
                   stroke="#C1F17E" 
@@ -57,159 +44,185 @@ const Energy = () => {
                   strokeLinejoin="round"
                 />
               </svg>
-              <span className="brand-name">CarbonWise</span>
             </div>
+            <span className="logo-text">CarbonWise</span>
           </div>
         </div>
-        <div className="header-divider"></div>
-      </header>
+      </div>
 
       {/* Main Content */}
-      <main className="energy-main">
+      <div className="energy-content">
         {/* Progress Bar */}
         <div className="progress-container">
-          <Progress value={75} className="progress-bar" />
+          <div className="energy-progress">
+            <div className="progress-fill" style={{width: '75%'}}></div>
+          </div>
         </div>
 
         {/* Form Container */}
         <div className="form-container">
-          <div className="step-info">
-            <h1 className="step-title">Let's understand your energy usage</h1>
-            <p className="step-description">
+          {/* Header */}
+          <div className="form-header">
+            <h1 className="form-title">Let's understand your energy usage</h1>
+            <p className="form-subtitle">
               Don't worry if you don't have exact figures. You can provide estimates now and update them later.
             </p>
           </div>
 
+          {/* Form Fields */}
           <div className="form-section">
-            {/* Primary Energy Provider */}
-            <div className="form-field">
+            {/* Energy Provider */}
+            <div className="field-group">
               <label className="field-label">Primary energy provider</label>
-              <Select onValueChange={(value) => handleInputChange("energyProvider", value)}>
-                <SelectTrigger className="select-trigger">
-                  <SelectValue placeholder="Select" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="electricity-company-1">Local Electric Company</SelectItem>
-                  <SelectItem value="electricity-company-2">Green Energy Co.</SelectItem>
-                  <SelectItem value="electricity-company-3">PowerGrid Inc.</SelectItem>
-                  <SelectItem value="other">Other</SelectItem>
-                </SelectContent>
-              </Select>
+              <div className="select-container">
+                <select
+                  value={formData.energyProvider}
+                  onChange={(e) => handleInputChange("energyProvider", e.target.value)}
+                  className="energy-select"
+                >
+                  <option value="" disabled>Select provider</option>
+                  <option value="local-electric">Local Electric Company</option>
+                  <option value="green-energy">Green Energy Co.</option>
+                  <option value="power-grid">PowerGrid Inc.</option>
+                  <option value="other">Other</option>
+                </select>
+                <div className="select-arrow">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 6L8 10L12 6" stroke="#696C72" strokeWidth="1.33" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </div>
+              </div>
             </div>
 
-            {/* Average Monthly Electricity Bill */}
-            <div className="form-field">
+            {/* Electricity Bill */}
+            <div className="field-group">
               <label className="field-label">Average monthly electricity bill</label>
-              <Select onValueChange={(value) => handleInputChange("electricityBill", value)}>
-                <SelectTrigger className="select-trigger">
-                  <SelectValue placeholder="Select" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="0-50">$0 - $50</SelectItem>
-                  <SelectItem value="51-100">$51 - $100</SelectItem>
-                  <SelectItem value="101-200">$101 - $200</SelectItem>
-                  <SelectItem value="201-300">$201 - $300</SelectItem>
-                  <SelectItem value="301-500">$301 - $500</SelectItem>
-                  <SelectItem value="500+">$500+</SelectItem>
-                </SelectContent>
-              </Select>
+              <div className="select-container">
+                <select
+                  value={formData.electricityBill}
+                  onChange={(e) => handleInputChange("electricityBill", e.target.value)}
+                  className="energy-select"
+                >
+                  <option value="" disabled>Select range</option>
+                  <option value="0-50">$0 - $50</option>
+                  <option value="51-100">$51 - $100</option>
+                  <option value="101-200">$101 - $200</option>
+                  <option value="201-300">$201 - $300</option>
+                  <option value="301-500">$301 - $500</option>
+                  <option value="500+">$500+</option>
+                </select>
+                <div className="select-arrow">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 6L8 10L12 6" stroke="#696C72" strokeWidth="1.33" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </div>
+              </div>
             </div>
 
-            {/* Do you use renewable energy? */}
-            <div className="form-field">
+            {/* Renewable Energy */}
+            <div className="field-group">
               <label className="field-label">Do you use renewable energy?</label>
-              <RadioGroup 
-                value={formData.renewableEnergy}
-                onValueChange={(value) => handleInputChange("renewableEnergy", value)}
-                className="radio-group"
-              >
+              <div className="radio-group">
                 <div className="radio-item">
-                  <RadioGroupItem value="yes" id="renewable-yes" className="radio-input" />
+                  <input
+                    type="radio"
+                    id="renewable-yes"
+                    name="renewableEnergy"
+                    value="yes"
+                    checked={formData.renewableEnergy === 'yes'}
+                    onChange={(e) => handleInputChange('renewableEnergy', e.target.value)}
+                    className="radio-input"
+                  />
                   <label htmlFor="renewable-yes" className="radio-label">Yes</label>
                 </div>
                 <div className="radio-item">
-                  <RadioGroupItem value="no" id="renewable-no" className="radio-input" />
+                  <input
+                    type="radio"
+                    id="renewable-no"
+                    name="renewableEnergy"
+                    value="no"
+                    checked={formData.renewableEnergy === 'no'}
+                    onChange={(e) => handleInputChange('renewableEnergy', e.target.value)}
+                    className="radio-input"
+                  />
                   <label htmlFor="renewable-no" className="radio-label">No</label>
                 </div>
-              </RadioGroup>
+              </div>
             </div>
 
-            {/* Renewable Energy Percentage Slider */}
-            {formData.renewableEnergy === "yes" && (
-              <div className="form-field slider-field">
-                <label className="field-label">
-                  If yes: What percentage of your energy comes from renewable sources? (slider)
-                </label>
-                <div className="slider-container">
-                  <Slider
-                    value={formData.renewablePercentage}
-                    onValueChange={(value) => handleInputChange("renewablePercentage", value)}
-                    max={100}
-                    step={1}
-                    className="renewable-slider"
-                  />
-                  <div className="slider-value">{formData.renewablePercentage[0]}%</div>
-                </div>
-              </div>
-            )}
-
-            {/* Do you use natural gas? */}
-            <div className="form-field">
-              <label className="field-label">Do you use natural gas? (Yes/No toggle)</label>
-              <RadioGroup 
-                value={formData.naturalGas}
-                onValueChange={(value) => handleInputChange("naturalGas", value)}
-                className="radio-group"
-              >
+            {/* Natural Gas */}
+            <div className="field-group">
+              <label className="field-label">Do you use natural gas?</label>
+              <div className="radio-group">
                 <div className="radio-item">
-                  <RadioGroupItem value="yes" id="gas-yes" className="radio-input" />
+                  <input
+                    type="radio"
+                    id="gas-yes"
+                    name="naturalGas"
+                    value="yes"
+                    checked={formData.naturalGas === 'yes'}
+                    onChange={(e) => handleInputChange('naturalGas', e.target.value)}
+                    className="radio-input"
+                  />
                   <label htmlFor="gas-yes" className="radio-label">Yes</label>
                 </div>
                 <div className="radio-item">
-                  <RadioGroupItem value="no" id="gas-no" className="radio-input" />
+                  <input
+                    type="radio"
+                    id="gas-no"
+                    name="naturalGas"
+                    value="no"
+                    checked={formData.naturalGas === 'no'}
+                    onChange={(e) => handleInputChange('naturalGas', e.target.value)}
+                    className="radio-input"
+                  />
                   <label htmlFor="gas-no" className="radio-label">No</label>
                 </div>
-              </RadioGroup>
-            </div>
-
-            {/* Average Monthly Gas Usage */}
-            {formData.naturalGas === "yes" && (
-              <div className="form-field">
-                <label className="field-label">If yes: Average monthly gas usage</label>
-                <Select onValueChange={(value) => handleInputChange("gasUsage", value)}>
-                  <SelectTrigger className="select-trigger">
-                    <SelectValue placeholder="Select" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="0-25">0 - 25 therms</SelectItem>
-                    <SelectItem value="26-50">26 - 50 therms</SelectItem>
-                    <SelectItem value="51-100">51 - 100 therms</SelectItem>
-                    <SelectItem value="101-200">101 - 200 therms</SelectItem>
-                    <SelectItem value="200+">200+ therms</SelectItem>
-                  </SelectContent>
-                </Select>
               </div>
-            )}
-
-            {/* Action Buttons */}
-            <div className="button-section">
-              <Button 
-                onClick={handleContinue}
-                className="continue-button"
-              >
-                Continue
-              </Button>
-              <Button 
-                onClick={handleSkip}
-                variant="ghost"
-                className="skip-button"
-              >
-                Skip
-              </Button>
             </div>
           </div>
+
+           <div className="field-group">
+              <label className="field-label">If yes: Average monthly gas usage</label>
+              <div className="select-container">
+                <select
+                  value={formData.electricityBill}
+                  onChange={(e) => handleInputChange("electricityBill", e.target.value)}
+                  className="energy-select"
+                >
+                  <option value="" disabled>Select range</option>
+                  <option value="0-50">Less than Rs. 5000</option>
+                  <option value="51-100">Rs. 5000 - 20,000</option>
+                  <option value="101-200">Rs. 20,000 - 100,000</option>
+                  <option value="201-300">More than Rs. 100,000</option>
+            
+                </select>
+                <div className="select-arrow">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 6L8 10L12 6" stroke="#696C72" strokeWidth="1.33" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+
+          {/* Buttons */}
+          <div className="button-section">
+            <button 
+              onClick={handleContinue}
+              className="continue-button"
+            >
+              Continue
+            </button>
+            <button 
+              onClick={handleSkip}
+              className="skip-button"
+            >
+              Skip
+            </button>
+          </div>
         </div>
-      </main>
+      </div>
     </div>
   );
 };
