@@ -17,6 +17,7 @@
     Helvetica,
     sans-serif;
   overflow: hidden;
+  
 }
 
 /* Navigation Styles */
@@ -43,12 +44,14 @@
   align-items: center;
   gap: 4px;
   position: relative;
+  margin-left: -70px;
 }
 
 .logo-icon {
   width: 28px;
   height: 28px;
   position: relative;
+  
 }
 
 .logo-text {
