@@ -5,9 +5,9 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Slider } from "@/components/ui/slider";
 import { cn } from "@/lib/utils";
-import "./energy.css";
+import "./Energy.css";
 
-const EnergyProfile = () => {
+const Energy = () => {
   const [formData, setFormData] = useState({
     energyProvider: "",
     electricityBill: "",
@@ -214,4 +214,4 @@ const EnergyProfile = () => {
   );
 };
 
-export default EnergyProfile;
+export default Energy;

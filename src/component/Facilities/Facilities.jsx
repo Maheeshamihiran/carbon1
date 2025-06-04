@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import './facilities.css';
 
 const Facilities = () => {
-  // eslint-disable-next-line no-unused-vars
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     primaryLocation: '',
@@ -22,7 +21,7 @@ const Facilities = () => {
 
   const handleContinue = () => {
     console.log('Facilities data:', formData);
-    // Handle form submission
+    navigate('/energy');  // Navigate to energy page
   };
 
   const handleSkip = () => {

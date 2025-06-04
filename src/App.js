@@ -5,6 +5,8 @@ import Login from './component/LoginPage/LoginPage';
 import Logged from './component/Logged/Logged';
 import Busness from './component/Busness/Busness';
 import Facilities from './component/Facilities/Facilities';
+import Energy from './component/Energy/Energy';
+
 
 function App() {
   return (
@@ -16,6 +18,7 @@ function App() {
           <Route path="/logged" element={<Logged />} />
           <Route path="/busness" element={<Busness />} />
           <Route path="/facilities" element={<Facilities />} />
+          <Route path="/energy" element={<Energy />} />
         </Routes>
       </div>
     </Router>
