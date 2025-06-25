@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 import "./Energy.css";
 
 const Energy = () => {
@@ -18,15 +19,27 @@ const Energy = () => {
     }));
   };
 
-  const handleContinue = () => {
-    console.log("Energy data:", formData);
-    navigate("/transportation"); // Add this line to navigate to transportation
+  const handleSkip = () => {
+    console.log("Form data:", formData);
+    navigate('/transportation');
   };
 
-  const handleSkip = () => {
-    console.log("Skipped energy form");
-    // Navigate to next page
+  // Validation: check if all fields are filled
+  const isFormValid =
+    formData.energyProvider.trim() !== "" &&
+    formData.electricityBill.trim() !== "" &&
+    formData.renewableEnergy.trim() !== "" &&
+    formData.naturalGas.trim() !== "";
+
+  const handleContinue = () => {
+    if (isFormValid) {
+      navigate("/transportation");
+    } else {
+      alert("You should fill all details.");
+    }
   };
+
+ 
 
   return (
     <div className="energy-container">
@@ -208,12 +221,12 @@ const Energy = () => {
 
           {/* Buttons */}
           <div className="button-section">
-            <button 
-              onClick={handleContinue}
-              className="continue-button"
-            >
-              Continue
-            </button>
+           <Button
+  onClick={handleContinue}
+  className="continue-button"
+>
+  Continue
+</Button>
             <button 
               onClick={handleSkip}
               className="skip-button"
