@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./Busness.css";
+import "./business.css";
 
 const Business = () => {
   const navigate = useNavigate();

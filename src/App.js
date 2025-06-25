@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import SignUp from './component/SignUp/SignUp';
 import Login from './component/LoginPage/LoginPage';
 import Logged from './component/Logged/Logged';
-import Busness from './component/Busness/Busness';
+import Busness from './component/business/business';
 import Facilities from './component/Facilities/Facilities';
 import Energy from './component/Energy/Energy';
 import Transportation from './component/Transportation/Transportation';
