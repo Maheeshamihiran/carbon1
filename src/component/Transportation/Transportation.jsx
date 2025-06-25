@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 import { Progress } from "@/components/ui/progress";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Switch } from "@/components/ui/switch";
@@ -19,7 +20,19 @@ const Transportation = () => {
     fuelExpenses: "",
     employeesCommute: "",
     commutingDistance: ""
+
+    
   });
+  const navigate = useNavigate(); // <-- Add this line
+
+  // ...existing handlers...
+
+  // Replace handlesignup with this function:
+  const handleSignup = () => {
+    navigate("/signup");
+  };
+
+
 
   const handleInputChange = (field, value) => {
     setFormData(prev => ({
@@ -54,10 +67,6 @@ const Transportation = () => {
     }));
   };
 
-  const handlesignup = () => {
-    console.log("Form data:", formData);
-    // Handle form submission and navigation to dashboard
-  };
 
   const vehicleTypes = [
     { key: "motorcycles", label: "Motorcycles" },
@@ -210,7 +219,7 @@ const Transportation = () => {
             {/* Action Button */}
             <div className="button-section">
               <Button 
-                onClick={handlesignup}
+                onClick={handleSignup}
                 className="dashboard-button"
               >
                 Go To Sign Up 
