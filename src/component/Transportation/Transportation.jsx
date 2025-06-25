@@ -54,7 +54,7 @@ const Transportation = () => {
     }));
   };
 
-  const handleGoToDashboard = () => {
+  const handlesignup = () => {
     console.log("Form data:", formData);
     // Handle form submission and navigation to dashboard
   };
@@ -210,10 +210,10 @@ const Transportation = () => {
             {/* Action Button */}
             <div className="button-section">
               <Button 
-                onClick={handleGoToDashboard}
+                onClick={handlesignup}
                 className="dashboard-button"
               >
-                Go to Dashboard
+                Go To Sign Up 
               </Button>
             </div>
           </div>

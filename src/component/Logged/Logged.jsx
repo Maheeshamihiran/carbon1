@@ -32,9 +32,7 @@ const ActionButtons = () => {
       <button className="button-filled-standard" onClick={handleContinueClick}>
         Continue
       </button>
-      <button className="button-outlined-standard">
-        Skip
-      </button>
+      
     </div>
   );
 };

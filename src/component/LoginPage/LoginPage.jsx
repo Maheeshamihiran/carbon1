@@ -5,12 +5,12 @@ import "./LoginPage.css";
 const Login = () => {
   const navigate = useNavigate();
 
-  const handleSignUpClick = () => {
-    navigate('/signup');
+  const handleCreateClick = () => {
+    navigate('/logged');
   };
   
   const handleLoginClick = () => {
-    navigate('/logged');
+    navigate('/dashboard');
   };
 
   return (
@@ -134,7 +134,7 @@ const Login = () => {
 
             <p className="signup-text">
               Don't have an account?
-              <button className="signup-link" onClick={handleSignUpClick}>Sign up</button>
+              <button className="signup-link" onClick={handleCreateClick}>Create Account</button>
             </p>
           </div>
         </main>

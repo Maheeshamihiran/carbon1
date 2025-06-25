@@ -22,10 +22,7 @@ const Business = () => {
     navigate('/facilities');
   };
 
-  const handleSkip = () => {
-    console.log("Skipped form");
-    navigate('/facilities');
-  };
+ 
 
   return (
     <div className="business-container">
@@ -185,9 +182,7 @@ const Business = () => {
             <button onClick={handleContinue} className="continue-button">
               Continue
             </button>
-            <button onClick={handleSkip} className="skip-button">
-              Skip
-            </button>
+            
           </div>
         </div>
       </div>
